@@ -10,116 +10,135 @@
         android:id="@+id/lblTime"
         android:layout_width="159dp"
         android:layout_height="47dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/button_design"
+        android:gravity="center"
         android:text="Time"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txtTime"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center"
+
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lblTime"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.371" />
 
     <TextView
         android:id="@+id/lblMuscle"
         android:layout_width="159dp"
         android:layout_height="47dp"
-        android:layout_marginTop="188dp"
+        android:gravity="center"
         android:text="Muscle"
         android:textSize="20sp"
+        android:background="@drawable/button_design"
+        app:layout_constraintBottom_toTopOf="@+id/lblLocation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txtMuscle"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtMuscle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="192dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtLocation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toEndOf="@+id/lblMuscle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTime"
+        app:layout_constraintVertical_bias="0.595" />
 
     <TextView
         android:id="@+id/lblLocation"
         android:layout_width="159dp"
         android:layout_height="47dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:background="@drawable/button_design"
         android:text="Location"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintBottom_toTopOf="@+id/lblEquipment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txtLocation"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtEquipment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@+id/lblLocation"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/lblLocation" />
 
     <TextView
         android:id="@+id/lblEquipment"
         android:layout_width="159dp"
         android:layout_height="47dp"
-        android:layout_marginTop="340dp"
+        android:gravity="center"
         android:text="Equipment"
         android:textSize="20sp"
+        android:background="@drawable/button_design"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txtEquipment"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtEquipment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="488dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/lblEquipment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:gravity="center"
         android:text="Button"
+        android:textColor="#FBF8F8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
+
+        app:layout_constraintVertical_bias="0.869" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
