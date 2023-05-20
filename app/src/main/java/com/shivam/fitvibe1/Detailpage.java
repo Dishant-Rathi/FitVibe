@@ -1,11 +1,11 @@
 package com.shivam.fitvibe1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -14,74 +14,32 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-
 public class Detailpage extends AppCompatActivity {
     RequestQueue queue;
     TextView txtData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailpage);
+        String Time= getIntent().getStringExtra("Time");
+        String Muscle= getIntent().getStringExtra("Muscle");
+        String Location= getIntent().getStringExtra("Location");
+        String Equipment= getIntent().getStringExtra("Equipment");
 
-      /*  RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://workout-planner1.p.rapidapi.com/?time=30&muscle=biceps&location=gym&equipment=dumbbells";
-
-// Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-
-                        Toast.makeText(getApplicationContext(),response.substring(0,500),Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("That didn't work!");
-            }
-        });
-
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);*/
-      /*  String URL ="https://workout-planner1.p.rapidapi.com/?time=30&muscle=biceps&location=gym&equipment=dumbbells";
-        queue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_SHORT).show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Didnot work",Toast.LENGTH_SHORT).show();
-            }
-        });
-        queue.add(request);*/
-
-        /*HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://workout-planner1.p.rapidapi.com/?time=30&muscle=biceps&location=gym&equipment=dumbbells"))
-                .header("X-RapidAPI-Key", "47a1cfb9f8msh233a86af19467cap167c9ajsn51f38e84b9cc")
-                .header("X-RapidAPI-Host", "workout-planner1.p.rapidapi.com")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());*/
-        txtData=findViewById(R.id.lblData);
-
+        TextView lblWarm=findViewById(R.id.lblWarm);
+        TextView lblCool=findViewById(R.id.lblCool);
+        TextView lblExer=findViewById(R.id.lblExer);
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://workout-planner1.p.rapidapi.com/?time=30&muscle=biceps&location=gym&equipment=dumbbells";
+        String url = "https://workout-planner1.p.rapidapi.com/?time=90&muscle=biceps&location=gym&equipment=dumbbells";
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>()
                 {
@@ -89,8 +47,56 @@ public class Detailpage extends AppCompatActivity {
                     public void onResponse(String response) {
                         // response
                         Toast.makeText(getApplicationContext(),response.substring(0,500),Toast.LENGTH_SHORT).show();
-                        System.out.print(response);
-                        txtData.setText(response);
+                        System.out.println("my data"+response);
+                        //JSONParser parser = new JSONParser();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            //String id=(String) obj.get("Warm Up");
+                            //txtData.setText(obj.getString("Warm Up"));
+                            JSONArray warmdata=obj.getJSONArray("Warm Up");
+                            JSONObject warm = warmdata.getJSONObject(0);
+
+                            lblWarm.setText("WarmUp\n");
+                            for (int i=0;i<warmdata.length();i++) {
+                                warm = warmdata.getJSONObject(i);
+                                String exer = warm.getString("Exercise");
+                                String time= warm.getString("Time");
+                                lblWarm.append("Exercise: "+exer+"\n");
+                                lblWarm.append("Time: "+time+"\n");
+                                Log.e("exercise data :   " , exer+"\n");
+                                Log.e("time data " , time+"\n");
+                            }
+                            lblExer.setText("Exercise");
+                            JSONArray exedata=obj.getJSONArray("Exercises");
+                            for (int i=0;i<exedata.length();i++) {
+                                 warm = exedata.getJSONObject(i);
+                                String exer = warm.getString("Exercise");
+                                String sets= warm.getString("Sets");
+                                String rep= warm.getString("Reps");
+                                lblExer.append("Exercise: "+exer+"\n");
+                                lblExer.append("Sets: "+sets+"\n");
+                                lblExer.append("rep: "+rep+"\n");
+                                Log.e("exercise data 11111   " , exer);
+                                Log.e("time data " , sets);
+                                System.out.println("rep data " + rep);
+                            }
+                            lblCool.setText("CoolDown");
+                            JSONArray cddata=obj.getJSONArray("Cool Down");
+                            for (int i=0;i<cddata.length();i++) {
+                                 warm = cddata.getJSONObject(i);
+                                String exer = warm.getString("Exercise");
+                                String time= warm.getString("Time");
+                                lblCool.append("Exercise: "+exer+"\n");
+                                lblCool.append("Time: "+time+"\n");
+                                Log.e("exercise data 11111   " , exer);
+                                Log.e("time data " , time);
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //txtData.setText(response);
                     }
                 },
                 new Response.ErrorListener()
@@ -105,7 +111,7 @@ public class Detailpage extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("X-RapidAPI-Key", "47a1cfb9f8msh233a86af19467cap167c9ajsn51f38e84b9cc");
+                params.put("X-RapidAPI-Key", "99dbf9f00fmshf99235d9556391ep105de4jsn4511d9788c28");
                 params.put("X-RapidAPI-Host", "workout-planner1.p.rapidapi.com");
 
                 return params;
