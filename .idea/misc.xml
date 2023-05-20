@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FitVibe2/app/src/main/res/layout/activity_detailpage.xml" value="0.15" />
         <entry key="..\:/FitVibe2/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/FitVibe2/app/src/main/res/layout/dataholder.xml" value="0.12" />
       </map>
     </option>
   </component>
