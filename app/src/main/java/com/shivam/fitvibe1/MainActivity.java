@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
         btnSearch=findViewById(R.id.btnSearch);
 
 
-
-
         btnSearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
