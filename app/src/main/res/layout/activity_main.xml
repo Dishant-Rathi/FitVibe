@@ -30,11 +30,12 @@
         app:layout_constraintStart_toEndOf="@+id/lblTime"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.169" />
+
     <TextView
         android:id="@+id/lblMuscle"
         android:layout_width="159dp"
         android:layout_height="47dp"
-        android:layout_marginTop="186dp"
+        android:layout_marginTop="188dp"
         android:text="Muscle"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
